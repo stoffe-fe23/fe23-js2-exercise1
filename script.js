@@ -55,13 +55,13 @@ const country = {
 displayPersonName(person);
 
 // 3
-createHTMLElement("div", `Price sum of 4 ${item.name}: ${calculatePriceSum(item, 4)}`, null, '', document.body);
+createHTMLElement("div", `Price sum of 4 ${item.name}: ${calculatePriceSum(item, 4)}`, document.body);
 
 // 4
-createHTMLElement("div", `Price sum of 4 discounted ${item.name}: ${calculatePriceSumWithDiscount(item, 4)}`, null, '', document.body);
+createHTMLElement("div", `Price sum of 4 discounted ${item.name}: ${calculatePriceSumWithDiscount(item, 4)}`, document.body);
 
 // 5
-createHTMLElement("div", `New name: ${getOldschoolMarriageName(person1, person2)}`, null, '', document.body);
+createHTMLElement("div", `New name: ${getOldschoolMarriageName(person1, person2)}`, document.body);
 
 // 6
 console.log("Cloned object: ", cloneAndAddLocationToObject(obj1, "Malmö"), " Original: ", obj1);
@@ -90,7 +90,7 @@ displayObject(niklasBur, 'personbox');
 
 // 2
 function displayPersonName({ first, last }) {
-    createHTMLElement("h2", `${first} ${last}`, null, '', document.body);
+    createHTMLElement("h2", `${first} ${last}`, document.body);
 }
 
 // 3
@@ -178,8 +178,8 @@ function invertObjectPropertiesAlt(originalObject) {
 
 // 11
 function displayObject(country, cssClass) {
-    const countryWrapper = createHTMLElement("div", '', null, cssClass, document.body);
+    const objectWrapper = createHTMLElement("div", '', document.body, cssClass);
     for (const propertyName in country) {
-        createHTMLElement("div", `<strong>${propertyName}</strong>: ${country[propertyName]}`, null, '', countryWrapper, true);
+        createHTMLElement("div", `<strong>${propertyName}</strong>: ${country[propertyName]}`, objectWrapper, '', null, true);
     }
 }

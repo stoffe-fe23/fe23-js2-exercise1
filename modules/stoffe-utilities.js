@@ -269,7 +269,7 @@ export function addClassToElement(targetElement, classesToAdd) {
 // elementClass can ba a string or an array of strings. 
 // The elementAttributes parameter can be an object with a property for each attribute to set on the HTML element. 
 // Set CSS "white-space: pre-wrap;" on element if allowHTML is true and you wish to keep newlines displayed. 
-export function createHTMLElement(elementType, elementText, elementAttributes = null, elementClass = '', parentElement = null, allowHTML = false) {
+export function createHTMLElement(elementType, elementText, parentElement = null, elementClass = '', elementAttributes = null, allowHTML = false) {
     const newElement = document.createElement(elementType);
 
     // Set any attributes on the element
