@@ -1,0 +1,12 @@
+
+.countrybox {
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: lightgray;
+}
+
+.personbox {
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: lightblue;
+}
