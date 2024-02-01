@@ -78,8 +78,8 @@ const testCreature = buildCreatureObject();
 console.log("Creature: ", testCreature);
 
 // 10 
-// console.log("Reverted object: ", invertObjectProperties(testCreature), " original: ", testCreature);
-console.log("Reverted object: ", invertObjectPropertiesAlt(testCreature), " original: ", testCreature);
+console.log("Reverted object: ", invertObjectProperties(testCreature), " original: ", testCreature);
+// console.log("Reverted object: ", invertObjectPropertiesAlt(testCreature), " original: ", testCreature);
 
 // 11
 displayObject(country, 'countrybox');
