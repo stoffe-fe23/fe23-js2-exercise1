@@ -109,10 +109,13 @@ export function splitStringByTag(textString, openTag, closeTag) {
 // ... would set the content of the myElement DOM element to the content of myString, where
 // if it contains anchor tags starting with '<a class="text-link' those will be treated as
 // HTML, while the rest of the string is treated as text. 
+// If allowedAttributes is set to an array the attributes listed within will be copied over
+// to the tag. 
 // Remember to set white-space: pre-wrap; on the container/target element to preserve
 // newlines in the text (if desired, similar to innerText). 
-export function setTextWithTag(targetElement, textString, tagName, openTag, closeTag) {
+export function setTextWithTag(targetElement, textString, tagName, openTag, closeTag, allowedAttributes = null) {
     const textFragments = splitStringByTag(textString, openTag, closeTag);
+    allowedAttributes = (allowedAttributes ?? ['href', 'src', 'target']);
     targetElement.innerHTML = "";
 
     for (const fragment of textFragments) {
@@ -123,15 +126,16 @@ export function setTextWithTag(targetElement, textString, tagName, openTag, clos
 
             newSubElement.innerText = tempElement.content.firstElementChild.innerText;
             newSubElement.className = tempElement.content.firstElementChild.className;
+            newSubElement.id = tempElement.content.firstElementChild.id;
 
-            if ((tempElement.content.firstElementChild.href !== undefined) && (tempElement.content.firstElementChild.href !== null)) {
-                newSubElement.href = tempElement.content.firstElementChild.href;
+            if (getIsValidArray(allowedAttributes, 1)) {
+                for (const attributeName of allowedAttributes) {
+                    if ((tempElement.content.firstElementChild[attributeName] !== undefined) && (tempElement.content.firstElementChild[attributeName] !== null)) {
+                        newSubElement[attributeName] = tempElement.content.firstElementChild[attributeName];
+                    }
+                }
+
             }
-
-            if ((tempElement.content.firstElementChild.target !== undefined) && (tempElement.content.firstElementChild.target !== null)) {
-                newSubElement.target = tempElement.content.firstElementChild.target;
-            }
-
             tempElement.remove();
             targetElement.appendChild(newSubElement);
         }
