@@ -51,6 +51,7 @@ const country = {
 
 /************************************************************************************** */
 
+createHTMLElement('select', ['1|One|Numbers', '2|Two|Numbers', '3|Three|Numbers', '4|Four|Numbers', 'yes|Affirmative|NASA', 'no|Negative|NASA', 'understood|Copy|NASA'], document.body);
 
 // 2
 displayPersonName(person);
