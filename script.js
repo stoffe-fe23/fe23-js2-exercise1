@@ -152,25 +152,19 @@ function buildCreatureObject() {
 function invertObjectProperties(originalObject) {
     const myObject = { ...originalObject };
 
-    for (const propertyName in myObject) {
-        const newKey = myObject[propertyName];
+    for (const propertyName in originalObject) {
+        const newKey = originalObject[propertyName];
         const newVal = propertyName;
-        if (newKey !== propertyName) {
-            myObject[newKey] = newVal;
-            delete myObject[propertyName];
-        }
+        myObject[newKey] = newVal;
     }
     return myObject;
 }
 
 
 function invertObjectPropertiesAlt(originalObject) {
-    const myObject = { ...originalObject };
-    Object.keys(myObject).forEach((propertyName) => {
-        if (myObject[propertyName] != propertyName) {
-            myObject[myObject[propertyName]] = propertyName;
-            delete myObject[propertyName];
-        }
+    const myObject = {};
+    Object.keys(originalObject).forEach((propertyName) => {
+        myObject[originalObject[propertyName]] = propertyName;
     });
     return myObject;
 }
